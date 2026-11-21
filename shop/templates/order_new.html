@@ -1,0 +1,28 @@
+{{define "content"}}
+<table>
+  <tr><th>Товар</th><th>Кол-во</th><th>Сумма</th></tr>
+  {{range .Data.Cart.Lines}}
+  <tr><td>{{.Product.Name}}</td><td>{{.Qty}}</td><td>{{.Sum}} руб.</td></tr>
+  {{end}}
+</table>
+<p><b>Итого: {{.Data.Cart.Total}} руб.</b></p>
+
+<form method="post" action="/order/new" class="form">
+  <label>ФИО
+    <input name="full_name" value="{{.Data.F.FullName}}" maxlength="150" required>
+  </label>
+  <label>Телефон
+    <input name="phone" value="{{.Data.F.Phone}}" maxlength="30" required>
+  </label>
+  <label>Город
+    <input name="city" value="{{.Data.F.City}}" maxlength="100" required>
+  </label>
+  <label>Адрес доставки
+    <input name="address" value="{{.Data.F.Address}}" maxlength="200" required>
+  </label>
+  <p class="row">
+    <button class="button">Подтвердить заказ</button>
+    <a class="button alt" href="/cart">Назад в корзину</a>
+  </p>
+</form>
+{{end}}

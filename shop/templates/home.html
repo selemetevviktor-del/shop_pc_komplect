@@ -1,0 +1,8 @@
+{{define "content"}}
+<h1>Комплектующие для ПК</h1>
+<p>Процессоры, видеокарты, память и многое другое. Выберите категорию:</p>
+<ul>
+  {{range .Data}}<li><a href="/products?category={{.ID}}">{{.Name}}</a></li>{{end}}
+</ul>
+<p><a class="button" href="/products">Весь каталог</a></p>
+{{end}}

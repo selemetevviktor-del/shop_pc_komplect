@@ -1,0 +1,16 @@
+{{define "content"}}
+<p>Категория: {{.Data.Category}}</p>
+<p>{{.Data.Description}}</p>
+<p><b>Цена: {{.Data.Price}} руб.</b></p>
+{{if gt .Data.Stock 0}}
+<p>В наличии: {{.Data.Stock}} шт.</p>
+<form method="post" action="/cart/add" class="row">
+  <input type="hidden" name="product" value="{{.Data.ID}}">
+  <input type="number" name="qty" value="1" min="1" max="{{.Data.Stock}}">
+  <button class="button">В корзину</button>
+</form>
+{{else}}
+<p>Нет в наличии.</p>
+{{end}}
+<p><a href="/products">Назад в каталог</a></p>
+{{end}}

@@ -1,0 +1,57 @@
+/* 1. Цвета и шрифт */
+:root {
+  --font: Arial, Helvetica, sans-serif;
+  --text: #222222;
+  --line: #999999;
+  --bg: #ffffff;
+  --button: #333333;
+  --danger: #a02020;
+  --ok-bg: #e3efd6;
+  --bad-bg: #f3d9d5;
+}
+
+/* 2. Общее */
+body { margin: 0; font-family: var(--font); font-size: 16px; line-height: 1.5; color: var(--text); background: var(--bg); }
+a { color: var(--text); }
+
+/* 3. Шапка */
+.header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; padding: 16px 32px; border-bottom: 2px solid var(--text); }
+.logo { font-size: 24px; font-weight: bold; text-decoration: none; }
+.menu a { margin-left: 20px; text-decoration: none; }
+.menu a:hover, .menu a.active { text-decoration: underline; }
+
+/* 4. Содержимое */
+.page { max-width: 900px; margin: 0 auto; padding: 16px 32px 48px; }
+.notice { padding: 8px 12px; border: 1px solid var(--line); }
+.notice.ok { background: var(--ok-bg); }
+.notice.bad { background: var(--bad-bg); }
+
+/* 5. Таблицы */
+table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: #eeeeee; }
+
+/* 6. Формы */
+.form { max-width: 420px; }
+.form label { display: block; margin-bottom: 12px; }
+input, select, textarea { box-sizing: border-box; width: 100%; padding: 6px; font: inherit; border: 1px solid var(--line); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.row input, .row select { width: auto; }
+input.short { width: 80px; }
+.inline { display: inline; }
+
+/* 7. Кнопки */
+.button { display: inline-block; padding: 6px 14px; font: inherit; color: white; background: var(--button); border: 1px solid var(--button); text-decoration: none; cursor: pointer; }
+.button.alt { color: var(--button); background: white; }
+.button.small { padding: 2px 8px; font-size: 14px; }
+.button.danger { background: var(--danger); border-color: var(--danger); }
+.link-button { font: inherit; background: none; border: none; text-decoration: underline; cursor: pointer; padding: 0; }
+
+/* 8. Подвал */
+.footer { padding: 16px 32px; border-top: 1px solid var(--line); font-size: 14px; }
+
+/* 9. Телефон */
+@media (max-width: 600px) {
+  .header, .page, .footer { padding-left: 12px; padding-right: 12px; }
+  table { font-size: 14px; }
+}

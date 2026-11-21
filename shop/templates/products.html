@@ -1,0 +1,25 @@
+{{define "content"}}
+<form method="get" action="/products" class="row">
+  <select name="category">
+    <option value="0">Все категории</option>
+    {{range .Data.Categories}}<option value="{{.ID}}"{{if eq .ID $.Data.Category}} selected{{end}}>{{.Name}}</option>{{end}}
+  </select>
+  <button class="button">Показать</button>
+</form>
+
+{{if .Data.Products}}
+<table>
+  <tr><th>Название</th><th>Категория</th><th>Цена</th><th>В наличии</th></tr>
+  {{range .Data.Products}}
+  <tr>
+    <td><a href="/products/{{.ID}}">{{.Name}}</a></td>
+    <td>{{.Category}}</td>
+    <td>{{.Price}} руб.</td>
+    <td>{{if gt .Stock 0}}{{.Stock}} шт.{{else}}нет{{end}}</td>
+  </tr>
+  {{end}}
+</table>
+{{else}}
+<p>Ничего не найдено.</p>
+{{end}}
+{{end}}

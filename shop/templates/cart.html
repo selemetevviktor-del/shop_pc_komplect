@@ -1,0 +1,25 @@
+{{define "content"}}
+{{if .Data.Lines}}
+<table>
+  <tr><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Сумма</th><th></th></tr>
+  {{range .Data.Lines}}
+  <tr>
+    <td><a href="/products/{{.Product.ID}}">{{.Product.Name}}</a></td>
+    <td>{{.Product.Price}} руб.</td>
+    <td>{{.Qty}}</td>
+    <td>{{.Sum}} руб.</td>
+    <td>
+      <form method="post" action="/cart/remove/{{.Product.ID}}" class="inline">
+        <button class="button small">Убрать</button>
+      </form>
+    </td>
+  </tr>
+  {{end}}
+</table>
+<p><b>Итого: {{.Data.Total}} руб.</b></p>
+<p><a class="button" href="/order/new">Оформить заказ</a></p>
+{{else}}
+<p>Корзина пуста.</p>
+<p><a class="button" href="/products">Перейти в каталог</a></p>
+{{end}}
+{{end}}

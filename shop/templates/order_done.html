@@ -1,0 +1,11 @@
+{{define "content"}}
+<p>Спасибо за заказ! Номер вашего заказа: <b>{{.Data.ID}}</b>.</p>
+<table>
+  <tr><th>Товар</th><th>Цена</th><th>Кол-во</th></tr>
+  {{range .Data.Items}}
+  <tr><td>{{.Name}}</td><td>{{.Price}} руб.</td><td>{{.Qty}}</td></tr>
+  {{end}}
+</table>
+<p><b>Итого: {{.Data.Total}} руб.</b></p>
+<p><a class="button" href="/products">Продолжить покупки</a></p>
+{{end}}

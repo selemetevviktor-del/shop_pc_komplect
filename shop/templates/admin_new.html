@@ -1,0 +1,26 @@
+{{define "content"}}
+<form method="post" action="/admin/new" class="form">
+  <label>Название
+    <input name="name" value="{{.Data.F.Name}}" maxlength="150" required>
+  </label>
+  <label>Категория
+    <select name="category" required>
+      <option value="">- выберите -</option>
+      {{range .Data.Categories}}<option value="{{.ID}}"{{if eq (printf "%d" .ID) $.Data.F.Category}} selected{{end}}>{{.Name}}</option>{{end}}
+    </select>
+  </label>
+  <label>Цена, руб.
+    <input type="number" name="price" value="{{.Data.F.Price}}" min="1" required>
+  </label>
+  <label>Количество
+    <input type="number" name="stock" value="{{.Data.F.Stock}}" min="0" required>
+  </label>
+  <label>Описание (необязательно)
+    <textarea name="description" rows="3" maxlength="1000">{{.Data.F.Description}}</textarea>
+  </label>
+  <p class="row">
+    <button class="button">Сохранить</button>
+    <a class="button alt" href="/admin">Отмена</a>
+  </p>
+</form>
+{{end}}

@@ -1,0 +1,20 @@
+{{define "content"}}
+{{if .Data}}
+<table>
+  <tr><th>№</th><th>Дата</th><th>Покупатель</th><th>Телефон</th><th>Адрес</th><th>Состав</th><th>Сумма</th></tr>
+  {{range .Data}}
+  <tr>
+    <td>{{.ID}}</td>
+    <td>{{date .CreatedAt}}</td>
+    <td>{{.FullName}}</td>
+    <td>{{.Phone}}</td>
+    <td>{{.City}}, {{.Address}}</td>
+    <td>{{range .Items}}{{.Name}} x {{.Qty}}<br>{{end}}</td>
+    <td>{{.Total}} руб.</td>
+  </tr>
+  {{end}}
+</table>
+{{else}}
+<p>Заказов пока нет.</p>
+{{end}}
+{{end}}
